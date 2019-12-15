@@ -1,0 +1,212 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package testimp;
+
+/**
+ *
+ * @author user
+ */
+public class classTestimp {
+    
+    /*
+    suplai = persediaan
+    req = permintaan
+    prdct = produksi 
+    */
+    
+    double suplai (double x){
+        
+        double aSuplai=1000;
+        double bSuplai=2500;
+        double csuplai=5000;
+
+        double hasilSuplai=0;
+
+        if(x>=aSuplai){
+            hasilSuplai=0;
+        }
+        
+        if(x<=aSuplai && x>=csuplai){
+            hasilSuplai=0;
+        }
+        
+        if(aSuplai<x && x<bSuplai){
+            hasilSuplai= (x-aSuplai)/(bSuplai-aSuplai);
+        }
+        
+        if(bSuplai<x && x<=csuplai){
+            hasilSuplai=1;
+        }
+        
+        return hasilSuplai;
+    }
+    
+    double reqtinggi (double x){
+        
+        double aReqTinggi=350;
+        double bReqTinggi=600;
+        double cReqTinggi=850;
+
+        double hasilReqTinggi=0;
+
+        if(x<=aReqTinggi && x>=cReqTinggi){
+            hasilReqTinggi=0;
+        }
+        
+        if(aReqTinggi<x && x<bReqTinggi){
+            hasilReqTinggi= (x-aReqTinggi)/(bReqTinggi-aReqTinggi);
+        }
+        
+        if(bReqTinggi<=x && x<=cReqTinggi){
+            hasilReqTinggi=-(x-cReqTinggi)/(cReqTinggi-bReqTinggi);
+        }
+        
+        return hasilReqTinggi;
+    }
+    
+    double reqrendah (double x){
+        
+        double aReqrendah=100;
+        double bReqrendah=350;
+        double cReqrendah=600;
+
+        double hasilReqrendah=0;
+
+        if(x<=aReqrendah && x>=cReqrendah){
+           hasilReqrendah=0;
+        }
+        
+        if(aReqrendah<x && x<=bReqrendah){
+            hasilReqrendah=(x-aReqrendah)/(bReqrendah-aReqrendah);
+        }
+        
+        if(bReqrendah<x && x<=cReqrendah){
+            hasilReqrendah=-(x-cReqrendah)/(cReqrendah-bReqrendah);
+        }
+        
+
+        return hasilReqrendah;
+    }
+/*
+    suplai dan permintaan tinggi = produksi banyak
+    suplai dan permintaan rendah = produksi rendah
+    
+    */
+    
+    double produksiKurang(double x, double y){
+        double dKurang=1000;
+        double cKurang=3500;
+        double Kurang;
+        
+        double a=suplai(x);
+        double b=reqrendah(y);
+        double rankrendah;
+        
+        if(a>b){
+            rankrendah=b;
+            Kurang= ((dKurang-cKurang)*rankrendah)+cKurang;
+            }else{
+                rankrendah=a;
+                Kurang= ((dKurang-cKurang)*rankrendah)+cKurang;
+            }
+        
+ 
+        return Kurang;
+        
+    }
+ 
+    double produksiTambah(double x, double y){
+        double atambah=3000;
+        double btambah=7000;
+        double Tambah;
+        
+        double a=suplai(x);
+        double b=reqtinggi(y);
+        double rankbanyak;
+        
+        if(a>b){
+            rankbanyak=b;
+            Tambah=btambah-((btambah-atambah)*rankbanyak);
+                    
+            }else{
+                rankbanyak=a;
+                Tambah=btambah-((btambah-atambah)*rankbanyak);
+            }
+ 
+        return Tambah;
+        
+    }
+
+
+    double defuzi(double x, double y){
+        double defA;
+        double defB;
+        double defRes;
+        
+        if(suplai(x)>reqtinggi(y)){
+            defA=reqtinggi(y);
+        }else{
+            defA=suplai(x);
+        }
+        
+        if(suplai(x)>reqrendah(y)){
+            defB=reqrendah(y);
+        }else{
+            defB=suplai(x);
+        }
+        
+        double kurang=produksiKurang(x,y);
+        double tambah=produksiTambah(x,y);
+        
+        defRes=((defB*kurang)+(defA*tambah))/(defA+defB);
+        
+        
+        return defRes;
+        
+    }
+
+    String defuzifikasi(double x, double y){
+        double defA;
+        double defB;
+        double defRes;
+        String s = "penyimpanan produksi pada tahap aman";
+    
+    if(850<y){
+        s="penyimpanan produksi pada tahap tidak aman";
+    }if(y<100){
+        s="penyimpanan produksi masih bisa memuat barang";
+    }
+    if(y>=201 && y<=849){
+        if(suplai(x)>reqtinggi(y)){
+            defA=reqtinggi(y);
+        }else{
+            defA=suplai(x);
+        }
+        
+        if(suplai(x)>reqrendah(y)){
+            defB=reqrendah(y);
+        }else{
+            defB=suplai(x);
+        }
+        
+        double kurang=produksiKurang(x,y);
+        double tambah=produksiTambah(x,y);
+        
+        defRes=((defB*kurang)+(defA*tambah))/(defA+defB);
+        
+        if(defRes<=4500 && defRes>=2000){
+            s="penyimpanan produksi pada tahap aman";
+        } else if(defRes<=7000 && defRes>=4500.000000000000001){
+            s="penyimpanan produksi pada tahap tidak aman";
+        }
+    }
+        
+        return s;
+        
+    }
+        
+        
+}
