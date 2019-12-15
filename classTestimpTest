@@ -1,0 +1,135 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package testimp;
+
+import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
+import static org.junit.Assert.*;
+
+/**
+ *
+ * @author user
+ */
+public class classTestimpTest {
+    
+    public classTestimpTest() {
+    }
+    
+    @BeforeClass
+    public static void setUpClass() {
+    }
+    
+    @AfterClass
+    public static void tearDownClass() {
+    }
+    
+    @Before
+    public void setUp() {
+    }
+    
+    @After
+    public void tearDown() {
+    }
+
+    /**
+     * Test of suplai method, of class classTestimp.
+     */
+    @Test
+    public void testSuplai() {
+        System.out.println("suplai");
+        double x = 3000.0;
+        classTestimp instance = new classTestimp();
+        double expResult = 1.0;
+        double result = instance.suplai(x);
+        assertEquals(expResult, result, 0.0);
+    }
+
+    /**
+     * Test of reqtinggi method, of class classTestimp.
+     */
+    @Test
+    public void testReqtinggi() {
+        System.out.println("reqtinggi");
+        double x = 400.0;
+        classTestimp instance = new classTestimp();
+        double expResult = 0.2;
+        double result = instance.reqtinggi(x);
+        assertEquals(expResult, result, 0.0);
+    }
+
+    /**
+     * Test of reqrendah method, of class classTestimp.
+     */
+    @Test
+    public void testReqrendah() {
+        System.out.println("reqrendah");
+        double x = 400.0;
+        classTestimp instance = new classTestimp();
+        double expResult = 0.8;
+        double result = instance.reqrendah(x);
+        assertEquals(expResult, result, 0.0);
+    }
+
+    /**
+     * Test of produksiKurang method, of class classTestimp.
+     */
+    @Test
+    public void testProduksiKurang() {
+        System.out.println("produksiKurang");
+        double x = 3000.0;
+        double y = 400.0;
+        classTestimp instance = new classTestimp();
+        double expResult = 1500.0;
+        double result = instance.produksiKurang(x, y);
+        assertEquals(expResult, result, 0.0);
+    }
+
+    /**
+     * Test of produksiTambah method, of class classTestimp.
+     */
+    @Test
+    public void testProduksiTambah() {
+        System.out.println("produksiTambah");
+        double x = 3000.0;
+        double y = 400.0;
+        classTestimp instance = new classTestimp();
+        double expResult = 6200.0;
+        double result = instance.produksiTambah(x, y);
+        assertEquals(expResult, result, 0.0);
+    }
+
+    /**
+     * Test of defuzi method, of class classTestimp.
+     */
+    @Test
+    public void testDefuzi() {
+        System.out.println("defuzi");
+        double x = 3000.0;
+        double y = 400.0;
+        classTestimp instance = new classTestimp();
+        double expResult = 2440.0;
+        double result = instance.defuzi(x, y);
+        assertEquals(expResult, result, 0.0);
+    }
+
+    /**
+     * Test of defuzifikasi method, of class classTestimp.
+     */
+    @Test
+    public void testDefuzifikasi() {
+        System.out.println("defuzifikasi");
+        double x = 3000.0;
+        double y = 400.0;
+        classTestimp instance = new classTestimp();
+        String expResult = "penyimpanan produksi pada tahap aman";
+        String result = instance.defuzifikasi(x, y);
+        assertEquals(expResult, result);
+    }
+    
+}
